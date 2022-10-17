@@ -17,11 +17,13 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 //Models/Tables
+db.cursos = require("../model/curso.model.js")(sequelize, Sequelize);
 db.users = require("../model/user.model.js")(sequelize, Sequelize);
 db.TipoUsuarios = require("../model/tipousuario.model.js")(
   sequelize,
   Sequelize
 );
+db.tipoCursos = require("../model/tipocurso.model.js")(sequelize, Sequelize);
 
 //db.users.hasOne(db.TipoUsuario);
 

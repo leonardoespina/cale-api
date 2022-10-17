@@ -3,7 +3,11 @@ module.exports = function (app) {
   const users = require("../controller/user.controller.js");
 
   // Retrieve all User
-  app.get("/api/users", users.findAll);
+  app.post("/api/users", auth, users.findAll);
+
+  // Registre Course
+
+  // app.post("/api/users", users.findAll);
 
   // Retrieve a single User by Id
   app.get("/api/users/:userId", users.findById);

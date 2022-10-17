@@ -4,6 +4,8 @@ const db = require("../config/db.config.js");
 
 verifyToken = (req, res, next) => {
   let token = req.headers["x-access-token"] || req.headers["authorization"];
+  console.log(token);
+
   if (token && token.startsWith("Bearer ")) {
     token = token.slice(7, token.length);
   }
@@ -22,7 +24,7 @@ verifyToken = (req, res, next) => {
     } else {
       req.user = decoded.id;
       next();
-      //res.status(200).send({ message: "successs" });
+      res.status(200).send({ message: "successs" });
     }
   });
 };

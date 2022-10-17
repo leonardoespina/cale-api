@@ -8,21 +8,17 @@ const TipoUsuario = db.TipoUsuarios;
 
 // FETCH all Users
 exports.findAll = async (req, res) => {
-  await User.findAll({
-    include: [{ model: TipoUsuario }],
-    where: {
-      idUser: 3,
-    },
-  })
+  await User.findAll()
     .then((res) => {
       // Send all users to Client
-      //    console.log(res);
+      //res.status(200).send({hola:"go"});
+      console.log(req.body);
       //  console.log(res[0]);
       //  let objeto = res[0];
 
-      for (let i in res) {
+      /*   for (let i in res) {
         console.log(`${res[i].dataValues.tipousuario.ruta}`);
-      }
+      }*/
 
       //console.log(res[0]._previousDataValues.tipousuario.user);
       //   console.log(res[0]._previousDataValues.tipousuario.ruta);
@@ -85,7 +81,7 @@ exports.signup = (req, res) => {
       User.create({
         firstname: req.body.firstname,
         lastname: req.body.lastname,
-        tipoUsuario: req.body.tipoUsuario,
+        idUser: req.body.idUser,
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password, 8),
       })
